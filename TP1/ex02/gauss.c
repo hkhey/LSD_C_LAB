@@ -5,24 +5,37 @@
 float *remontee(float A[N][N], float B[N], int n)
 {
 
-  /******Implement the solution here******/
-  /***************************************/
-  
-  /***************************************/
-  return x;
+  float *X;
+  X=malloc(sizeof(float)*n);
+  X[n-1]=B[n-1]/A[n-1][n-1];
+  for(int i=n-2;i>=0;i--)
+  {
+   float s=0;
+   for(int j=i+1;j<n;j++)
+   {
+    s+=A[i][j]*X[j];
+   }
+   X[i]=(B[i]-s)/A[i][i];
+  }
+  return X;
 }
 
 float *gauss(float A[N][N] ,float B[N], int n)
 {
-  /******Implement the Gaussian elimination******/
-  /**********************************************/
-  
-
-  /**********************************************/
-  /*Resolve the system using the back substitution method*/
-  /*You can use your solution of the exercice 1-b*/
-  x = remontee(A, B, n);
-  return(x);
+  for(int k=0;k<n;k++)
+  {
+    for(int i=k+1;i<n;i++)
+    {
+      float factor=A[i][k]/A[k][k];
+      for(int j=k+1;j<n;j++)
+      {
+         A[i][j]=A[i][j]-factor*A[k][j];
+      }
+     B[i]=B[i]-factor*B[k];
+    }
+  }
+  float *X = remontee(A, B, n);
+  return(X);
 }
 
 int main()
