@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define N 10
 
-float *lu(float A[N][N], float B[N], int n)
+float *cholesky(float A[N][N], float B[N], int n)
 {
   float* X;
   float l[N][N];
