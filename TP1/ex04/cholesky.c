@@ -78,7 +78,7 @@ int main()
   }
 
   /* The calculation of the result */
-  x = lu(A, B, n);
+  x = cholesky(A, B, n);
 
   /* Printing the results */
   printf("\nThe resulting vector: [");
